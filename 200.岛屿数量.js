@@ -80,13 +80,11 @@
 // };
 
 // UnionFind
-function UnionFind() {
+function UnionFind(grid) {
 	this.count = 0
 	this.parent = []
 	this.rank = []
-}
-UnionFind.prototype.UnionFind = function(grid) {
-	this.count = 0
+	
 	const m = grid.length
 	const n = grid[0].length
 	for(let i = 0; i < m; i++) {
@@ -111,7 +109,7 @@ UnionFind.prototype.union = function(x, y) {
 	if(rootx !== rooty) {
 		if(this.rank[rootx] > this.rank[rooty]) {
 			this.parent[rooty] = rootx
-		} else if (this.rank[rootx] > this.rank[rooty]) {
+		} else if (this.rank[rootx] < this.rank[rooty]) {
 			this.parent[rootx] = rooty
 		} else {
 			this.parent[rooty] = rootx
