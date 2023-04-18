@@ -84,7 +84,7 @@ function UnionFind(grid) {
 	this.count = 0
 	this.parent = []
 	this.rank = []
-	
+
 	const m = grid.length
 	const n = grid[0].length
 	for(let i = 0; i < m; i++) {
@@ -107,7 +107,7 @@ UnionFind.prototype.union = function(x, y) {
 	const rootx = this.find(x)
 	const rooty = this.find(y)
 	if(rootx !== rooty) {
-		if(this.rank[rootx] > this.rank[rooty]) {
+		if(this.rank[rooty] < this.rank[rootx]) {
 			this.parent[rooty] = rootx
 		} else if (this.rank[rootx] < this.rank[rooty]) {
 			this.parent[rootx] = rooty
